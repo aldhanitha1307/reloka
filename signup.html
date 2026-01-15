@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Akun - Trackify</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-box">
+            <h1 class="title">DAFTAR AKUN</h1>
+            
+            <form id="signupForm">
+                <div class="input-group">
+                    <label for="nipeg">Nomor Induk Kepegawaian (NIPEG)</label>
+                    <input type="text" id="nipeg" name="nipeg" placeholder="Masukkan NIPEG" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Masukkan email" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Masukkan password" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="confirmPassword">Konfirmasi Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Konfirmasi password" required>
+                </div>
+
+                <div class="error-message hidden" id="errorMessage"></div>
+
+                <button type="submit" class="btn-signup">
+                    <span class="spinner hidden" id="spinner"></span>
+                    <span id="btnText">Daftar</span>
+                </button>
+            </form>
+
+            <p class="footer-text">
+                Sudah punya akun? <a href="login.html">Login di sini</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Firebase SDK - INI PENTING! -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <!-- JavaScript File -->
+    <script src="rbac.js"></script>
+    <script src="signup.js"></script>
+</body>
+</html>

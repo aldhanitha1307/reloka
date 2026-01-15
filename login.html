@@ -1,45 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - Trackify</title>
-    <link rel="stylesheet" href="login.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles/login.css" />
+  </head>
+  <body>
     <div class="login-container">
-        <div class="login-box">
-            <h1 class="title">TRACKIFY</h1>
-            
-            <form id="loginForm">
-                <div class="input-group">
-                    <label for="nipeg">Nomor Induk Kepegawaian (NIPEG)</label>
-                    <input type="text" id="nipeg" name="nipeg" placeholder="Masukkan NIPEG" required>
-                </div>
+      <div class="login-box">
+        <h1 class="title">TRACKIFY</h1>
 
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Masukkan password" required>
-                </div>
+        <form id="loginForm">
+          <div class="input-group">
+            <label for="nipeg">Nomor Induk Kepegawaian (NIPEG)</label>
+            <input
+              type="text"
+              id="nipeg"
+              name="nipeg"
+              placeholder="Masukkan NIPEG"
+              required
+            />
+          </div>
 
-                <div class="error-message hidden" id="errorMessage"></div>
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Masukkan password"
+              required
+            />
+          </div>
 
-                <button type="submit" class="btn-login">
-                    <span class="spinner hidden" id="spinner"></span>
-                    <span id="btnText">Login</span>
-                </button>
-            </form>
+          <div class="error-message hidden" id="errorMessage"></div>
 
-            <p class="footer-text">
-                Belum punya akun? <a href="signup.html">Daftar di sini</a>
-            </p>
-        </div>
+          <button type="submit" class="btn-login">
+            <span class="spinner hidden" id="spinner"></span>
+            <span id="btnText">Login</span>
+          </button>
+        </form>
+
+        <p class="footer-text">
+          Belum punya akun? <a href="signup.html">Daftar di sini</a>
+        </p>
+      </div>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-    
-    <script src="login.js"></script>
-</body>
+
+    <script src="scripts/login.js"></script>
+  </body>
 </html>

@@ -1,207 +1,272 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home - Trackify</title>
-    <link rel="stylesheet" href="home.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles/home.css" />
+  </head>
+  <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <div class="logo">
-            <h2>TRACKIFY</h2>
-        </div>
-        
-        <nav class="menu">
-            <a href="#" class="menu-item active" data-page="jabatan-kosong">
-                <span class="icon">📋</span>
-                <span class="text">Jabatan Kosong</span>
-            </a>
-            <a href="#" class="menu-item" data-page="usulan" id="menuUsulan">
-                <span class="icon">📝</span>
-                <span class="text">Usulan</span>
-            </a>
-            <a href="#" class="menu-item" data-page="tabel-usulan">
-                <span class="icon">📊</span>
-                <span class="text">Tabel Usulan</span>
-            </a>   
-            <a href="admin.html" class="menu-item no-spa">
-                <span class="icon">⚙️</span>
-                <span class="text">Admin Panel</span>
-            </a>
-            <a href="inputdetailriwayat.html" class="menu-item no-spa" id="menuDetailRiwayat">
-                <span class="icon">📄</span>
-                <span class="text">Input Detail Riwayat</span>
-            </a>
-        </nav>
+      <div class="logo">
+        <h2>TRACKIFY</h2>
+      </div>
 
-        <div class="user-info">
-            <div class="user-avatar">👤</div>
-            <div class="user-details">
-                <div class="user-name" id="userName">Loading...</div>
-                <div class="user-nipeg" id="userNipeg">-</div>
-                <div class="user-role" id="userRole" style="font-size: 11px; color: #ffd700; font-weight: bold; margin-top: 3px;">-</div>
-            </div>
-            <button class="btn-logout" id="btnLogout">
-                <span>🚪</span>
-            </button>
+      <nav class="menu">
+        <a href="#" class="menu-item active" data-page="jabatan-kosong">
+          <span class="icon">📋</span>
+          <span class="text">Jabatan Kosong</span>
+        </a>
+        <a href="#" class="menu-item" data-page="usulan" id="menuUsulan">
+          <span class="icon">📝</span>
+          <span class="text">Usulan</span>
+        </a>
+        <a href="#" class="menu-item" data-page="tabel-usulan">
+          <span class="icon">📊</span>
+          <span class="text">Tabel Usulan</span>
+        </a>
+        <a href="admin.html" class="menu-item no-spa">
+          <span class="icon">⚙️</span>
+          <span class="text">Admin Panel</span>
+        </a>
+        <a
+          href="inputdetailriwayat.html"
+          class="menu-item no-spa"
+          id="menuDetailRiwayat"
+        >
+          <span class="icon">📄</span>
+          <span class="text">Input Detail Riwayat</span>
+        </a>
+      </nav>
+
+      <div class="user-info">
+        <div class="user-avatar">👤</div>
+        <div class="user-details">
+          <div class="user-name" id="userName">Loading...</div>
+          <div class="user-nipeg" id="userNipeg">-</div>
+          <div
+            class="user-role"
+            id="userRole"
+            style="
+              font-size: 11px;
+              color: #ffd700;
+              font-weight: bold;
+              margin-top: 3px;
+            "
+          >
+            -
+          </div>
         </div>
+        <button class="btn-logout" id="btnLogout">
+          <span>🚪</span>
+        </button>
+      </div>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Header -->
-        <div class="header">
-            <h1 id="pageTitle">Jabatan Kosong</h1>
-            <div class="header-info">
-                <span id="currentDate"></span>
+      <!-- Header -->
+      <div class="header">
+        <h1 id="pageTitle">Jabatan Kosong</h1>
+        <div class="header-info">
+          <span id="currentDate"></span>
+        </div>
+      </div>
+
+      <!-- Content Area -->
+      <div class="content" id="contentArea">
+        <!-- Jabatan Kosong Page (Default) -->
+        <div class="page-content" id="page-jabatan-kosong">
+          <div class="content-card">
+            <h2>Daftar Jabatan Kosong</h2>
+            <p>
+              Berikut adalah daftar jabatan yang sedang kosong dan membutuhkan
+              pengisian.
+            </p>
+
+            <div class="search-box">
+              <input
+                type="text"
+                id="searchJabatan"
+                placeholder="Cari jabatan..."
+              />
+              <button class="btn-search">🔍</button>
             </div>
+
+            <div class="table-container">
+              <table class="data-table" id="tabelJabatanKosong">
+                <thead>
+                  <tr>
+                    <th>Prev.Per.no</th>
+                    <th>Pers.No</th>
+                    <th>Personnel Number</th>
+                    <th>Nama Panjang Posisi</th>
+                    <th>Nama Pendek Posisi Atasan</th>
+                    <th>Nama Panjang Posisi - SIMKP</th>
+                    <th>Personnel Number Atasan</th>
+                    <th>NIPEG Atasan</th>
+                    <th>Nama Atasan</th>
+                    <th>Telephone no.</th>
+                    <th>E-mail</th>
+                    <th>Business Area</th>
+                    <th>Personnel Subarea</th>
+                    <th>Tanggal Grade Terakhir</th>
+                    <th>Gender Key</th>
+                    <th>Birthplace</th>
+                    <th>Birth date</th>
+                    <th>PS group</th>
+                    <th>Lv</th>
+                    <th>Jenjang - Main Grp Text</th>
+                    <th>Jenjang - Sub Grp Text</th>
+                    <th>Organizational Unit</th>
+                    <th>Pendidikan Terakhir</th>
+                    <th>Marital Status Key</th>
+                    <th>Street and House Number</th>
+                    <th>City</th>
+                    <th>Position</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
         </div>
 
-        <!-- Content Area -->
-        <div class="content" id="contentArea">
-            <!-- Jabatan Kosong Page (Default) -->
-            <div class="page-content" id="page-jabatan-kosong">
-                <div class="content-card">
-                    <h2>Daftar Jabatan Kosong</h2>
-                    <p>Berikut adalah daftar jabatan yang sedang kosong dan membutuhkan pengisian.</p>
-                    
-                    <div class="search-box">
-                        <input type="text" id="searchJabatan" placeholder="Cari jabatan...">
-                        <button class="btn-search">🔍</button>
-                    </div>
+        <!-- Usulan Page -->
+        <div class="page-content hidden" id="page-usulan">
+          <div class="content-card">
+            <!-- Detail Jabatan Section -->
+            <div id="detailJabatanSection" style="display: none">
+              <h2>Detail Jabatan Kosong</h2>
+              <p>Berikut adalah detail riwayat jabatan yang dipilih.</p>
 
-                    <div class="table-container">
-                        <table class="data-table" id="tabelJabatanKosong">
-                            <thead>
-                                <tr>
-                                    <th>Prev.Per.no</th>
-                                    <th>Pers.No</th>
-                                    <th>Personnel Number</th>
-                                    <th>Nama Panjang Posisi</th>
-                                    <th>Nama Pendek Posisi Atasan</th>
-                                    <th>Nama Panjang Posisi - SIMKP</th>
-                                    <th>Personnel Number Atasan</th>
-                                    <th>NIPEG Atasan</th>
-                                    <th>Nama Atasan</th>
-                                    <th>Telephone no.</th>
-                                    <th>E-mail</th>
-                                    <th>Business Area</th>
-                                    <th>Personnel Subarea</th>
-                                    <th>Tanggal Grade Terakhir</th>
-                                    <th>Gender Key</th>
-                                    <th>Birthplace</th>
-                                    <th>Birth date</th>
-                                    <th>PS group</th>
-                                    <th>Lv</th>
-                                    <th>Jenjang - Main Grp Text</th>
-                                    <th>Jenjang - Sub Grp Text</th>
-                                    <th>Organizational Unit</th>
-                                    <th>Pendidikan Terakhir</th>
-                                    <th>Marital Status Key</th>
-                                    <th>Street and House Number</th>
-                                    <th>City</th>
-                                    <th>Position</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+              <div id="detailJabatanContainer"></div>
+
+              <!-- Button Usulkan - hanya tampil untuk admin -->
+              <button
+                type="button"
+                class="btn-usulkan admin-only"
+                id="btnUsulkan"
+                style="display: none"
+              >
+                📝 Usulkan Pegawai untuk Jabatan Ini
+              </button>
             </div>
 
-            <!-- Usulan Page -->
-            <div class="page-content hidden" id="page-usulan">
-                <div class="content-card">
-                    <!-- Detail Jabatan Section -->
-                    <div id="detailJabatanSection" style="display: none;">
-                        <h2>Detail Jabatan Kosong</h2>
-                        <p>Berikut adalah detail riwayat jabatan yang dipilih.</p>
-                        
-                        <div id="detailJabatanContainer"></div>
-                        
-                        <!-- Button Usulkan - hanya tampil untuk admin -->
-                        <button type="button" class="btn-usulkan admin-only" id="btnUsulkan" style="display: none;">
-                            📝 Usulkan Pegawai untuk Jabatan Ini
-                        </button>
-                    </div>
+            <!-- Form Usulan Section -->
+            <div id="formUsulanSection" style="display: none">
+              <button type="button" class="btn-back" id="btnBackToDetail">
+                ← Kembali ke Detail
+              </button>
 
-                    <!-- Form Usulan Section -->
-                    <div id="formUsulanSection" style="display: none;">
-                        <button type="button" class="btn-back" id="btnBackToDetail">← Kembali ke Detail</button>
-                        
-                        <h2>Form Usulan Mutasi</h2>
-                        <p>Isi form di bawah ini untuk mengusulkan pegawai.</p>
-                        
-                        <form class="form-usulan" id="formUsulan">
-                            <div class="form-group">
-                                <label>Jabatan yang Diusulkan</label>
-                                <input type="text" id="jabatanUsulan" placeholder="Masukkan jabatan yang diusulkan" required>
-                            </div>
+              <h2>Form Usulan Mutasi</h2>
+              <p>Isi form di bawah ini untuk mengusulkan pegawai.</p>
 
-                            <div class="form-group">
-                                <label>NIPEG Pegawai yang Diusulkan</label>
-                                <input type="text" id="nipegPegawai" placeholder="Masukkan NIPEG pegawai" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Nama Pegawai yang Diusulkan</label>
-                                <input type="text" id="namaPegawaiUsulan" placeholder="Masukkan nama pegawai" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Alasan Usulan</label>
-                                <textarea id="alasanUsulan" rows="4" placeholder="Jelaskan alasan usulan..." required></textarea>
-                            </div>
-
-                            <button type="submit" class="btn-submit">Kirim Usulan</button>
-                        </form>
-                    </div>
-
-                    <!-- Pesan default jika tidak ada jabatan dipilih -->
-                    <div id="usulanEmptyMessage">
-                        <p style="color: #999; text-align: center; padding: 40px; background: #f5f5f5; border-radius: 10px;">
-                            Pilih jabatan dari halaman "Jabatan Kosong" untuk membuat usulan
-                        </p>
-                    </div>
-
-                    <!-- Pesan untuk user yang tidak punya akses -->
-                    <div id="usulanNoAccessMessage" style="display: none;">
-                        <p style="color: #e53935; text-align: center; padding: 40px; background: #fff3f3; border-radius: 10px; border: 2px solid #e53935;">
-                            ⚠️ Anda tidak memiliki akses untuk membuat usulan. Hubungi administrator untuk informasi lebih lanjut.
-                        </p>
-                    </div>
+              <form class="form-usulan" id="formUsulan">
+                <div class="form-group">
+                  <label>Jabatan yang Diusulkan</label>
+                  <input
+                    type="text"
+                    id="jabatanUsulan"
+                    placeholder="Masukkan jabatan yang diusulkan"
+                    required
+                  />
                 </div>
+
+                <div class="form-group">
+                  <label>NIPEG Pegawai yang Diusulkan</label>
+                  <input
+                    type="text"
+                    id="nipegPegawai"
+                    placeholder="Masukkan NIPEG pegawai"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label>Nama Pegawai yang Diusulkan</label>
+                  <input
+                    type="text"
+                    id="namaPegawaiUsulan"
+                    placeholder="Masukkan nama pegawai"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label>Alasan Usulan</label>
+                  <textarea
+                    id="alasanUsulan"
+                    rows="4"
+                    placeholder="Jelaskan alasan usulan..."
+                    required
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Kirim Usulan</button>
+              </form>
             </div>
 
-            <!-- Tabel Usulan Page -->
-            <div class="page-content hidden" id="page-tabel-usulan">
-                <div class="content-card">
-                    <h2>Tabel Usulan</h2>
-                    <p>Daftar semua usulan yang telah diajukan.</p>
-
-                    <div class="table-container">
-                        <table class="data-table" id="tabelUsulan">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Tanggal</th>
-                                    <th>Jabatan</th>
-                                    <th>Nama Pegawai</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            <!-- Pesan default jika tidak ada jabatan dipilih -->
+            <div id="usulanEmptyMessage">
+              <p
+                style="
+                  color: #999;
+                  text-align: center;
+                  padding: 40px;
+                  background: #f5f5f5;
+                  border-radius: 10px;
+                "
+              >
+                Pilih jabatan dari halaman "Jabatan Kosong" untuk membuat usulan
+              </p>
             </div>
+
+            <!-- Pesan untuk user yang tidak punya akses -->
+            <div id="usulanNoAccessMessage" style="display: none">
+              <p
+                style="
+                  color: #e53935;
+                  text-align: center;
+                  padding: 40px;
+                  background: #fff3f3;
+                  border-radius: 10px;
+                  border: 2px solid #e53935;
+                "
+              >
+                ⚠️ Anda tidak memiliki akses untuk membuat usulan. Hubungi
+                administrator untuk informasi lebih lanjut.
+              </p>
+            </div>
+          </div>
         </div>
+
+        <!-- Tabel Usulan Page -->
+        <div class="page-content hidden" id="page-tabel-usulan">
+          <div class="content-card">
+            <h2>Tabel Usulan</h2>
+            <p>Daftar semua usulan yang telah diajukan.</p>
+
+            <div class="table-container">
+              <table class="data-table" id="tabelUsulan">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Tanggal</th>
+                    <th>Jabatan</th>
+                    <th>Nama Pegawai</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Firebase SDK -->
@@ -209,8 +274,8 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
-    <script src="firebaseconsole.js"></script>
-    <script src="rbac.js"></script>
-    <script src="home.js"></script>
-</body>
+    <script src="scripts/firebase/firebaseconsole.js"></script>
+    <script src="scripts/helpers/rbac.js"></script>
+    <script src="scripts/home.js"></script>
+  </body>
 </html>

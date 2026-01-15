@@ -1,229 +1,371 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Panel - Trackify</title>
-    <link rel="stylesheet" href="admin.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles/admin.css" />
+  </head>
+  <body>
     <!-- Loading Screen -->
-    <div id="loadingScreen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; justify-content: center; align-items: center; z-index: 9999;">
-        <div style="text-align: center; color: white;">
-            <h2>🔒 Checking Access...</h2>
-            <p>Please wait...</p>
-        </div>
+    <div
+      id="loadingScreen"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      "
+    >
+      <div style="text-align: center; color: white">
+        <h2>🔒 Checking Access...</h2>
+        <p>Please wait...</p>
+      </div>
     </div>
 
     <!-- Access Denied Screen -->
-    <div id="accessDenied" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #667eea, #764ba2); z-index: 9998;">
-        <div style="max-width: 500px; margin: 100px auto; text-align: center; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
-            <div style="font-size: 80px; margin-bottom: 20px;">🚫</div>
-            <h1 style="color: #e53935; margin-bottom: 15px;">Access Denied</h1>
-            <p style="color: #666; font-size: 16px; margin-bottom: 30px;">
-                Anda tidak memiliki akses ke halaman Admin Panel.<br>
-                Hubungi administrator untuk informasi lebih lanjut.
-            </p>
-            <button onclick="window.location.href='home.html'" style="padding: 12px 30px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer;">
-                ← Kembali ke Home
-            </button>
-        </div>
+    <div
+      id="accessDenied"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        z-index: 9998;
+      "
+    >
+      <div
+        style="
+          max-width: 500px;
+          margin: 100px auto;
+          text-align: center;
+          background: white;
+          padding: 40px;
+          border-radius: 20px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        "
+      >
+        <div style="font-size: 80px; margin-bottom: 20px">🚫</div>
+        <h1 style="color: #e53935; margin-bottom: 15px">Access Denied</h1>
+        <p style="color: #666; font-size: 16px; margin-bottom: 30px">
+          Anda tidak memiliki akses ke halaman Admin Panel.<br />
+          Hubungi administrator untuk informasi lebih lanjut.
+        </p>
+        <button
+          onclick="window.location.href = 'home.html'"
+          style="
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+          "
+        >
+          ← Kembali ke Home
+        </button>
+      </div>
     </div>
 
     <!-- Main Content (Hidden by default, shown only for admin) -->
-    <div class="container" id="mainContent" style="display: none;">
-        <a href="home.html" class="btn-back" style="display: inline-block; margin-bottom: 20px; text-decoration: none;">← Kembali ke Home</a>
-        
-        <h1>Admin Panel - Manajemen Pegawai</h1>
-        
-        <div style="text-align: center; margin-bottom: 30px;">
-            <span style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 8px 20px; border-radius: 20px; font-weight: bold;">
-                👑 Admin Access
-            </span>
+    <div class="container" id="mainContent" style="display: none">
+      <a
+        href="home.html"
+        class="btn-back"
+        style="
+          display: inline-block;
+          margin-bottom: 20px;
+          text-decoration: none;
+        "
+        >← Kembali ke Home</a
+      >
+
+      <h1>Admin Panel - Manajemen Pegawai</h1>
+
+      <div style="text-align: center; margin-bottom: 30px">
+        <span
+          style="
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+          "
+        >
+          👑 Admin Access
+        </span>
+      </div>
+
+      <h2>Tambah Data Pegawai Baru</h2>
+
+      <form id="formPegawai">
+        <div class="form-group">
+          <label for="nipeg">NIPEG (Prev.Per.no)</label>
+          <input
+            type="text"
+            id="nipeg"
+            placeholder="Contoh: 002187ZY"
+            required
+          />
         </div>
 
-        <h2>Tambah Data Pegawai Baru</h2>
-        
-        <form id="formPegawai">
-            <div class="form-group">
-                <label for="nipeg">NIPEG (Prev.Per.no)</label>
-                <input type="text" id="nipeg" placeholder="Contoh: 002187ZY" required>
-            </div>
-
-            <div class="form-group">
-                <label for="persNo">Pers.No</label>
-                <input type="text" id="PersNo" placeholder="Contoh: 228000">
-            </div>
-
-            <div class="form-group">
-                <label for="PersonnelNumber">Personnel Number</label>
-                <input type="text" id="PersonnelNumber" placeholder="Masukkan Personnel Number">
-            </div>
-
-            <div class="form-group">
-                <label for="NamaPanjangPosisi">Nama Panjang Posisi</label>
-                <input type="text" id="NamaPanjangPosisi" placeholder="Masukkan Nama Panjang Posisi">
-            </div>
-
-            <div class="form-group">
-                <label for="NamaPendekPosisiAtasan">Nama Pendek Posisi Atasan</label>
-                <input type="text" id="NamaPendekPosisiAtasan" placeholder="Masukkan Nama Pendek Posisi Atasan">
-            </div>
-
-            <div class="form-group">
-                <label for="NamaPanjangPosisiSIMKP">Nama Panjang Posisi - SIMKP</label>
-                <input type="text" id="NamaPanjangPosisiSIMKP" placeholder="Masukkan Nama Panjang Posisi SIMKP">
-            </div>
-
-            <div class="form-group">
-                <label for="PersonnelNumberAtasan">Personnel Number Atasan</label>
-                <input type="text" id="PersonnelNumberAtasan" placeholder="Masukkan Personnel Number Atasan">
-            </div>
-
-            <div class="form-group">
-                <label for="NIPEGAtasan">NIPEG Atasan</label>
-                <input type="text" id="NIPEGAtasan" placeholder="Masukkan NIPEG Atasan">
-            </div>
-
-            <div class="form-group">
-                <label for="NamaAtasan">Nama Atasan</label>
-                <input type="text" id="NamaAtasan" placeholder="Masukkan Nama Atasan">
-            </div>
-
-            <div class="form-group">
-                <label for="TelephoneNo">Telephone No.</label>
-                <input type="text" id="TelephoneNo" placeholder="Masukkan Nomor Telepon">
-            </div>
-
-            <div class="form-group">
-                <label for="Email">E-mail</label>
-                <input type="email" id="Email" placeholder="Masukkan Email">
-            </div>
-
-            <div class="form-group">
-                <label for="BusinessArea">Business Area</label>
-                <input type="text" id="BusinessArea" placeholder="Masukkan Business Area">
-            </div>
-
-            <div class="form-group">
-                <label for="PersonnelSubarea">Personnel Subarea</label>
-                <input type="text" id="PersonnelSubarea" placeholder="Masukkan Personnel Subarea">
-            </div>
-
-            <div class="form-group">
-                <label for="TanggalGradeTerakhir">Tanggal Grade Terakhir</label>
-                <input type="text" id="TanggalGradeTerakhir" placeholder="Contoh: 01/01/2023">
-            </div>
-
-            <div class="form-group">
-                <label for="GenderKey">Gender Key</label>
-                <input type="text" id="GenderKey" placeholder="Contoh: Male/Female">
-            </div>
-
-            <div class="form-group">
-                <label for="Birthplace">Birthplace</label>
-                <input type="text" id="Birthplace" placeholder="Masukkan Tempat Lahir">
-            </div>
-
-            <div class="form-group">
-                <label for="BirthDate">Birth Date</label>
-                <input type="text" id="BirthDate" placeholder="Contoh: 01/01/1990">
-            </div>
-
-            <div class="form-group">
-                <label for="PSgroup">PS Group</label>
-                <input type="text" id="PSgroup" placeholder="Masukkan PS Group">
-            </div>
-
-            <div class="form-group">
-                <label for="Lv">Lv</label>
-                <input type="text" id="Lv" placeholder="Masukkan Level">
-            </div>
-
-            <div class="form-group">
-                <label for="JenjangMainGrpText">Jenjang - Main Grp Text</label>
-                <input type="text" id="JenjangMainGrpText" placeholder="Masukkan Jenjang Main Grp Text">
-            </div>
-
-            <div class="form-group">
-                <label for="JenjangSubGrpText">Jenjang - Sub Grp Text</label>
-                <input type="text" id="JenjangSubGrpText" placeholder="Masukkan Jenjang Sub Grp Text">
-            </div>
-
-            <div class="form-group">
-                <label for="OrganizationalUnit">Organizational Unit</label>
-                <input type="text" id="OrganizationalUnit" placeholder="Masukkan Organizational Unit">
-            </div>
-
-            <div class="form-group">
-                <label for="PendidikanTerakhir">Pendidikan Terakhir</label>
-                <input type="text" id="PendidikanTerakhir" placeholder="Masukkan Pendidikan Terakhir">
-            </div>
-
-            <div class="form-group">
-                <label for="MaritalStatusKey">Marital Status Key</label>
-                <input type="text" id="MaritalStatusKey" placeholder="Contoh: M/S">
-            </div>
-
-            <div class="form-group">
-                <label for="StreetandHouseNumber">Street and House Number</label>
-                <input type="text" id="StreetandHouseNumber" placeholder="Masukkan Alamat">
-            </div>
-
-            <div class="form-group">
-                <label for="City">City</label>
-                <input type="text" id="City" placeholder="Masukkan Kota">
-            </div>
-
-            <div class="form-group">
-                <label for="Position">Position</label>
-                <input type="text" id="Position" placeholder="Masukkan Posisi">
-            </div>
-
-            <button type="submit" class="btn-submit">✅ Tambah Pegawai</button>
-        </form>
-
-        <h2 class="table-title">Data Pegawai yang Sudah Diinput</h2>
-
-        <div class="table-wrapper">
-            <table class="data-table" id="tabelPegawai">
-                <thead>
-                    <tr>
-                        <th>NIPEG</th>
-                    <th>Pers.No</th>
-                    <th>Personnel Number</th>
-                    <th>Nama Panjang Posisi</th>
-                    <th>Nama Pendek Posisi Atasan</th>
-                    <th>Nama Panjang Posisi - SIMKP</th>
-                    <th>Personnel Number Atasan</th>
-                    <th>NIPEG Atasan</th>
-                    <th>Nama Atasan</th>
-                    <th>Telephone no.</th>
-                    <th>E-mail</th>
-                    <th>Business Area</th>
-                    <th>Personnel Subarea</th>
-                    <th>Tanggal Grade Terakhir</th>
-                    <th>Gender Key</th>
-                    <th>Birthplace</th>
-                    <th>Birth date</th>
-                    <th>PS group</th>
-                    <th>Lv</th>
-                    <th>Jenjang - Main Grp Text</th>
-                    <th>Jenjang - Sub Grp Text</th>
-                    <th>Organizational Unit</th>
-                    <th>Pendidikan Terakhir</th>
-                    <th>Marital Status Key</th>
-                    <th>Street and House Number</th>
-                    <th>City</th>
-                    <th>Position</th>
-                    <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td colspan="8" style="text-align: center;">Loading...</td></tr>
-                </tbody>
-            </table>
+        <div class="form-group">
+          <label for="persNo">Pers.No</label>
+          <input type="text" id="PersNo" placeholder="Contoh: 228000" />
         </div>
+
+        <div class="form-group">
+          <label for="PersonnelNumber">Personnel Number</label>
+          <input
+            type="text"
+            id="PersonnelNumber"
+            placeholder="Masukkan Personnel Number"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="NamaPanjangPosisi">Nama Panjang Posisi</label>
+          <input
+            type="text"
+            id="NamaPanjangPosisi"
+            placeholder="Masukkan Nama Panjang Posisi"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="NamaPendekPosisiAtasan">Nama Pendek Posisi Atasan</label>
+          <input
+            type="text"
+            id="NamaPendekPosisiAtasan"
+            placeholder="Masukkan Nama Pendek Posisi Atasan"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="NamaPanjangPosisiSIMKP"
+            >Nama Panjang Posisi - SIMKP</label
+          >
+          <input
+            type="text"
+            id="NamaPanjangPosisiSIMKP"
+            placeholder="Masukkan Nama Panjang Posisi SIMKP"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="PersonnelNumberAtasan">Personnel Number Atasan</label>
+          <input
+            type="text"
+            id="PersonnelNumberAtasan"
+            placeholder="Masukkan Personnel Number Atasan"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="NIPEGAtasan">NIPEG Atasan</label>
+          <input
+            type="text"
+            id="NIPEGAtasan"
+            placeholder="Masukkan NIPEG Atasan"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="NamaAtasan">Nama Atasan</label>
+          <input
+            type="text"
+            id="NamaAtasan"
+            placeholder="Masukkan Nama Atasan"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="TelephoneNo">Telephone No.</label>
+          <input
+            type="text"
+            id="TelephoneNo"
+            placeholder="Masukkan Nomor Telepon"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="Email">E-mail</label>
+          <input type="email" id="Email" placeholder="Masukkan Email" />
+        </div>
+
+        <div class="form-group">
+          <label for="BusinessArea">Business Area</label>
+          <input
+            type="text"
+            id="BusinessArea"
+            placeholder="Masukkan Business Area"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="PersonnelSubarea">Personnel Subarea</label>
+          <input
+            type="text"
+            id="PersonnelSubarea"
+            placeholder="Masukkan Personnel Subarea"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="TanggalGradeTerakhir">Tanggal Grade Terakhir</label>
+          <input
+            type="text"
+            id="TanggalGradeTerakhir"
+            placeholder="Contoh: 01/01/2023"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="GenderKey">Gender Key</label>
+          <input type="text" id="GenderKey" placeholder="Contoh: Male/Female" />
+        </div>
+
+        <div class="form-group">
+          <label for="Birthplace">Birthplace</label>
+          <input
+            type="text"
+            id="Birthplace"
+            placeholder="Masukkan Tempat Lahir"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="BirthDate">Birth Date</label>
+          <input type="text" id="BirthDate" placeholder="Contoh: 01/01/1990" />
+        </div>
+
+        <div class="form-group">
+          <label for="PSgroup">PS Group</label>
+          <input type="text" id="PSgroup" placeholder="Masukkan PS Group" />
+        </div>
+
+        <div class="form-group">
+          <label for="Lv">Lv</label>
+          <input type="text" id="Lv" placeholder="Masukkan Level" />
+        </div>
+
+        <div class="form-group">
+          <label for="JenjangMainGrpText">Jenjang - Main Grp Text</label>
+          <input
+            type="text"
+            id="JenjangMainGrpText"
+            placeholder="Masukkan Jenjang Main Grp Text"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="JenjangSubGrpText">Jenjang - Sub Grp Text</label>
+          <input
+            type="text"
+            id="JenjangSubGrpText"
+            placeholder="Masukkan Jenjang Sub Grp Text"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="OrganizationalUnit">Organizational Unit</label>
+          <input
+            type="text"
+            id="OrganizationalUnit"
+            placeholder="Masukkan Organizational Unit"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="PendidikanTerakhir">Pendidikan Terakhir</label>
+          <input
+            type="text"
+            id="PendidikanTerakhir"
+            placeholder="Masukkan Pendidikan Terakhir"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="MaritalStatusKey">Marital Status Key</label>
+          <input type="text" id="MaritalStatusKey" placeholder="Contoh: M/S" />
+        </div>
+
+        <div class="form-group">
+          <label for="StreetandHouseNumber">Street and House Number</label>
+          <input
+            type="text"
+            id="StreetandHouseNumber"
+            placeholder="Masukkan Alamat"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="City">City</label>
+          <input type="text" id="City" placeholder="Masukkan Kota" />
+        </div>
+
+        <div class="form-group">
+          <label for="Position">Position</label>
+          <input type="text" id="Position" placeholder="Masukkan Posisi" />
+        </div>
+
+        <button type="submit" class="btn-submit">✅ Tambah Pegawai</button>
+      </form>
+
+      <h2 class="table-title">Data Pegawai yang Sudah Diinput</h2>
+
+      <div class="table-wrapper">
+        <table class="data-table" id="tabelPegawai">
+          <thead>
+            <tr>
+              <th>NIPEG</th>
+              <th>Pers.No</th>
+              <th>Personnel Number</th>
+              <th>Nama Panjang Posisi</th>
+              <th>Nama Pendek Posisi Atasan</th>
+              <th>Nama Panjang Posisi - SIMKP</th>
+              <th>Personnel Number Atasan</th>
+              <th>NIPEG Atasan</th>
+              <th>Nama Atasan</th>
+              <th>Telephone no.</th>
+              <th>E-mail</th>
+              <th>Business Area</th>
+              <th>Personnel Subarea</th>
+              <th>Tanggal Grade Terakhir</th>
+              <th>Gender Key</th>
+              <th>Birthplace</th>
+              <th>Birth date</th>
+              <th>PS group</th>
+              <th>Lv</th>
+              <th>Jenjang - Main Grp Text</th>
+              <th>Jenjang - Sub Grp Text</th>
+              <th>Organizational Unit</th>
+              <th>Pendidikan Terakhir</th>
+              <th>Marital Status Key</th>
+              <th>Street and House Number</th>
+              <th>City</th>
+              <th>Position</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="8" style="text-align: center">Loading...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- Firebase SDK -->
@@ -231,8 +373,8 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
-    <script src="firebaseconsole.js"></script>
-    <script src="rbac.js"></script>
-    <script src="admin.js"></script>
-</body>
+    <script src="scripts/firebase/firebaseconsole.js"></script>
+    <script src="scripts/helpers/rbac.js"></script>
+    <script src="scripts/admin.js"></script>
+  </body>
 </html>

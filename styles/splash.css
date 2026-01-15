@@ -1,0 +1,140 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  overflow: hidden;
+}
+
+/* Splash Screen Container */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOut 0.5s ease-in-out 2.5s forwards;
+}
+
+/* Background Image */
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("backgroundsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.7); /* Biar text lebih jelas */
+}
+
+/* Content Container */
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* App Name */
+.app-name {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: "Coco Gothic", "Arial Black", sans-serif;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Loading Spinner (Optional) */
+.loading-spinner {
+  margin-top: 30px;
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-top: 5px solid #ffffff;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  animation: spin 1s linear infinite;
+}
+
+/* Main Content (Hidden awalnya) */
+.main-content {
+  padding: 50px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-name {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-name {
+    font-size: 28px;
+  }
+}
+
+/* Font Coco Gothic (Download atau pakai Google Fonts alternatif) */
+@font-face {
+  font-family: "Coco Gothic";
+  src: url("assets/fonts/coco_gothic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}

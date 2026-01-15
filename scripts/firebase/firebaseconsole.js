@@ -5,7 +5,7 @@ const firebaseConfig = {
   projectId: "trackify-1672d",
   storageBucket: "trackify-1672d.firebasestorage.app",
   messagingSenderId: "691845221808",
-  appId: "1:691845221808:web:5d8db9a0a0346789a95a75"
+  appId: "1:691845221808:web:5d8db9a0a0346789a95a75",
 };
 
 // Initialize Firebase
@@ -17,5 +17,3 @@ const auth = firebase.auth();
 window.auth = auth;
 window.db = db;
 console.log("✅ Firebase loaded");
-
-

@@ -1,78 +1,161 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Input Detail Riwayat Pegawai</title>
-    <link rel="stylesheet" href="inputdetailriwayat.css">
-</head>
 
-<body>
+    <link rel="stylesheet" href="styles/inputdetailriwayat.css" />
 
+    <!-- STYLE HALAMAN ACCESS -->
+    <style>
+      #loadingScreen,
+      #accessDenied {
+        width: 100%;
+        height: 100vh;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      #loadingScreen {
+        display: flex;
+        font-size: 24px;
+      }
+
+      #accessDenied h1 {
+        font-size: 42px;
+        color: red;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      #accessDenied p {
+        font-size: 18px;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
     <!-- LOADING -->
     <div id="loadingScreen">
-        <div>🔒 Checking Access...<br><small>Please wait...</small></div>
+      <div>🔒 Checking Access...<br /><small>Please wait...</small></div>
     </div>
 
-    <!-- ACCESS DENIED -->
-    <div id="accessDenied" style="display: none;">
-        <div class="access-card">
-            <div style="font-size: 80px; margin-bottom: 20px;">🚫</div>
-            <h1>ACCESS DENIED</h1>
-            <p>Anda tidak memiliki hak akses ke halaman ini.<br>Hubungi administrator untuk informasi lebih lanjut.</p>
-            <button onclick="window.location.href='home.html'">← Kembali ke Home</button>
-        </div>
+    <div id="accessDenied">
+      <div class="access-card">
+        <h1>ACCESS DENIED</h1>
+        <p>Anda tidak memiliki hak akses ke halaman ini.</p>
+      </div>
     </div>
 
     <!-- MAIN CONTENT -->
-    <div id="mainContent" style="display:none;">
-        <div class="container">
-            <h1>Input Detail Riwayat Pegawai</h1>
+    <div id="mainContent" style="display: none">
+      <div class="container">
+        <h1>Input Detail Riwayat Pegawai</h1>
 
-            <!-- DOC ID -->
-            <div class="form-group">
-                <label>Document ID Detail Riwayat</label>
-                <input type="text" id="docId" placeholder="Contoh: Ady1">
-            </div>
-
-            <!-- NIPEG -->
-            <div class="form-group">
-                <label>NIPEG Pegawai</label>
-                <input type="text" id="nipeg" placeholder="Masukkan NIPEG Pegawai">
-            </div>
-
-            <!-- FORM DETAIL -->
-            <div class="form-group"><label>Pers.No</label><input id="PersNo"></div>
-            <div class="form-group"><label>Personnel Number</label><input id="PersonnelNumber"></div>
-            <div class="form-group"><label>Start Date</label><input type="date" id="StartDate"></div>
-            <div class="form-group"><label>End Date</label><input type="date" id="EndDate"></div>
-            <div class="form-group"><label>Personnel Area</label><input id="PersonnelArea"></div>
-            <div class="form-group"><label>PSubarea</label><input id="PSubarea"></div>
-            <div class="form-group"><label>Personnel Subarea</label><input id="PersonnelSubarea"></div>
-            <div class="form-group"><label>Org.unit</label><input id="OrgUnit"></div>
-            <div class="form-group"><label>Organizational Unit</label><input id="OrganizationalUnit"></div>
-            <div class="form-group"><label>Nama Panjang Posisi - SIMKP</label><input id="NamaPanjangPosisiSIMKP"></div>
-            <div class="form-group"><label>Jenjang - Main Grp ID</label><input id="JenjangMainGrpID"></div>
-            <div class="form-group"><label>Jenjang - Sub Grp Text</label><input id="JenjangSubGrpText"></div>
-            <div class="form-group"><label>Jenjang - Sub Grp ID</label><input id="JenjangSubGrpID"></div>
-            <div class="form-group"><label>Jenjang - Main Grp Text</label><input id="JenjangMainGrpText"></div>
-            <div class="form-group"><label>BusA</label><input id="BusA"></div>
-            <div class="form-group"><label>Business Area</label><input id="BusinessArea"></div>
-            <div class="form-group"><label>No SK Organizational Assignmen</label><input id="NoSKOrganizationalAssignmen"></div>
-            <div class="form-group"><label>Tanggal SK Organizational Assi</label><input type="date" id="TanggalSKOrganizationalAssi"></div>
-            <div class="form-group"><label>Kode Jabatan</label><input id="KodeJabatan"></div>
-            <div class="form-group"><label>Kelompok Jabatan</label><input id="KelompokJabatan"></div>
-            <div class="form-group"><label>Keterangan Jabatan</label><input id="KeteranganJabatan"></div>
-            <div class="form-group"><label>Employee Group</label><input id="EmployeeGroup"></div>
-            <div class="form-group"><label>Employee Subgroup</label><input id="EmployeeSubgroup"></div>
-            <div class="form-group"><label>PArea</label><input id="PArea"></div>
-            <div class="form-group"><label>Payroll Area</label><input id="PayrollArea"></div>
-            <div class="form-group"><label>CoCd</label><input id="CoCd"></div>
-
-            <!-- BUTTON -->
-            <button class="btn-submit" id="btnSaveOnly">Simpan & Selesai</button>
-            <button class="btn-submit" id="btnSaveMore">Simpan & Tambah Lagi</button>
+        <!-- DOC ID -->
+        <div class="form-group">
+          <label>Document ID Detail Riwayat</label>
+          <input type="text" id="docId" placeholder="Contoh: Ady1" />
         </div>
+
+        <!-- NIPEG -->
+        <div class="form-group">
+          <label>NIPEG Pegawai</label>
+          <input type="text" id="nipeg" placeholder="Masukkan NIPEG Pegawai" />
+        </div>
+
+        <!-- FORM DETAIL -->
+        <div class="form-group">
+          <label>Pers.No</label><input id="PersNo" />
+        </div>
+        <div class="form-group">
+          <label>Personnel Number</label><input id="PersonnelNumber" />
+        </div>
+        <div class="form-group">
+          <label>Start Date</label><input type="date" id="StartDate" />
+        </div>
+        <div class="form-group">
+          <label>End Date</label><input type="date" id="EndDate" />
+        </div>
+        <div class="form-group">
+          <label>Personnel Area</label><input id="PersonnelArea" />
+        </div>
+        <div class="form-group">
+          <label>PSubarea</label><input id="PSubarea" />
+        </div>
+        <div class="form-group">
+          <label>Personnel Subarea</label><input id="PersonnelSubarea" />
+        </div>
+        <div class="form-group">
+          <label>Org.unit</label><input id="OrgUnit" />
+        </div>
+        <div class="form-group">
+          <label>Organizational Unit</label><input id="OrganizationalUnit" />
+        </div>
+        <div class="form-group">
+          <label>Nama Panjang Posisi - SIMKP</label
+          ><input id="NamaPanjangPosisiSIMKP" />
+        </div>
+        <div class="form-group">
+          <label>Jenjang - Main Grp ID</label><input id="JenjangMainGrpID" />
+        </div>
+        <div class="form-group">
+          <label>Jenjang - Sub Grp Text</label><input id="JenjangSubGrpText" />
+        </div>
+        <div class="form-group">
+          <label>Jenjang - Sub Grp ID</label><input id="JenjangSubGrpID" />
+        </div>
+        <div class="form-group">
+          <label>Jenjang - Main Grp Text</label
+          ><input id="JenjangMainGrpText" />
+        </div>
+        <div class="form-group"><label>BusA</label><input id="BusA" /></div>
+        <div class="form-group">
+          <label>Business Area</label><input id="BusinessArea" />
+        </div>
+        <div class="form-group">
+          <label>No SK Organizational Assignmen</label
+          ><input id="NoSKOrganizationalAssignmen" />
+        </div>
+        <div class="form-group">
+          <label>Tanggal SK Organizational Assi</label
+          ><input type="date" id="TanggalSKOrganizationalAssi" />
+        </div>
+        <div class="form-group">
+          <label>Kode Jabatan</label><input id="KodeJabatan" />
+        </div>
+        <div class="form-group">
+          <label>Kelompok Jabatan</label><input id="KelompokJabatan" />
+        </div>
+        <div class="form-group">
+          <label>Keterangan Jabatan</label><input id="KeteranganJabatan" />
+        </div>
+        <div class="form-group">
+          <label>Employee Group</label><input id="EmployeeGroup" />
+        </div>
+        <div class="form-group">
+          <label>Employee Subgroup</label><input id="EmployeeSubgroup" />
+        </div>
+        <div class="form-group"><label>PArea</label><input id="PArea" /></div>
+        <div class="form-group">
+          <label>Payroll Area</label><input id="PayrollArea" />
+        </div>
+        <div class="form-group"><label>CoCd</label><input id="CoCd" /></div>
+
+        <!-- BUTTON -->
+        <button class="btn-submit" id="btnSaveOnly">Simpan & Selesai</button>
+        <br /><br />
+        <button class="btn-submit" id="btnSaveMore">
+          Simpan & Tambah Lagi
+        </button>
+      </div>
     </div>
 
     <!-- JS -->
@@ -80,9 +163,8 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
 
-    <script src="firebaseconsole.js"></script>
-    <script src="rbac.js"></script>
-    <script src="inputdetailriwayat.js"></script>
-
-</body>
+    <script src="scripts/firebase/firebaseconsole.js"></script>
+    <script src="scripts/helpers/rbac.js"></script>
+    <script src="scripts/inputdetailriwayat.js"></script>
+  </body>
 </html>

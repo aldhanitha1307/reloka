@@ -5,13 +5,10 @@ auth.onAuthStateChanged(async (user) => {
   }
 
   const nipeg = localStorage.getItem("NIPEG");
-
-  if (!nipeg) {
-    showAccessDenied();
-    return;
-  }
+  console.log("NIPEG dari localStorage:", nipeg);
 
   const admin = await isAdmin(nipeg);
+  console.log("HASIL isAdmin:", admin);
 
   if (admin === true) {
     showMainContent();
@@ -20,22 +17,17 @@ auth.onAuthStateChanged(async (user) => {
   }
 });
 
+
 function showAccessDenied() {
-  document.getElementById("loadingScreen").style.cssText =
-    "display:none !important;";
-  document.getElementById("accessDenied").style.cssText =
-    "display:flex !important;";
-  document.getElementById("mainContent").style.cssText =
-    "display:none !important;";
+  document.getElementById("loadingScreen").style.cssText = "display:none !important;";
+  document.getElementById("accessDenied").style.cssText = "display:flex !important;";
+  document.getElementById("mainContent").style.cssText = "display:none !important;";
 }
 
 function showMainContent() {
-  document.getElementById("loadingScreen").style.cssText =
-    "display:none !important;";
-  document.getElementById("accessDenied").style.cssText =
-    "display:none !important;";
-  document.getElementById("mainContent").style.cssText =
-    "display:block !important;";
+  document.getElementById("loadingScreen").style.cssText = "display:none !important;";
+  document.getElementById("accessDenied").style.cssText = "display:none !important;";
+  document.getElementById("mainContent").style.cssText = "display:block !important;";
 }
 
 

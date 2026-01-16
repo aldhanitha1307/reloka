@@ -13,12 +13,11 @@ auth.onAuthStateChanged((user) => {
     document.getElementById("loadingScreen").style.cssText = "display: none !important;";
     document.getElementById("accessDenied").style.cssText = "display: flex !important;";
     document.getElementById("mainContent").style.cssText = "display: none !important;";
-} else {
+  } else {
     document.getElementById("loadingScreen").style.cssText = "display: none !important;";
     document.getElementById("accessDenied").style.cssText = "display: none !important;";
     document.getElementById("mainContent").style.cssText = "display: block !important;";
-}
-
+  }
 });
 
 // ===============================

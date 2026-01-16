@@ -85,25 +85,24 @@ body {
     opacity: 0.9;
 }
 
-/* =========== MAIN CONTENT CONTAINER - FIXED CENTER ========= */
+/* =========== MAIN CONTENT CONTAINER - CENTER SEMPURNA ========= */
 #mainContent {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 0;
-    box-sizing: border-box;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 100vh !important;
+    padding: 40px 20px !important;
+    box-sizing: border-box !important;
 }
 
 .container {
-    width: 90%;
-    max-width: 900px;
-    background: rgba(255,255,255,0.98);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    box-sizing: border-box;
-    margin: 0 auto;
+    width: 90% !important;
+    max-width: 900px !important;
+    background: rgba(255,255,255,0.98) !important;
+    padding: 40px !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3) !important;
+    box-sizing: border-box !important;
     max-height: 90vh;
     overflow-y: auto;
 }
@@ -214,12 +213,12 @@ h1 {
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
     #mainContent {
-        padding: 20px 10px;
+        padding: 20px 10px !important;
     }
 
     .container {
-        width: 100%;
-        padding: 30px 20px;
+        width: 95% !important;
+        padding: 30px 20px !important;
     }
 
     h1 {

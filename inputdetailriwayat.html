@@ -4,41 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Input Detail Riwayat Pegawai</title>
-
     <link rel="stylesheet" href="styles/inputdetailriwayat.css" />
-
-    <!-- STYLE HALAMAN ACCESS -->
-    <style>
-      #loadingScreen,
-      #accessDenied {
-        width: 100%;
-        height: 100vh;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        color: white;
-        font-family: Arial, sans-serif;
-        text-align: center;
-      }
-
-      #loadingScreen {
-        display: flex;
-        font-size: 24px;
-      }
-
-      #accessDenied h1 {
-        font-size: 42px;
-        color: red;
-        margin-bottom: 10px;
-        font-weight: bold;
-      }
-
-      #accessDenied p {
-        font-size: 18px;
-        color: white;
-      }
-    </style>
   </head>
 
   <body>
@@ -47,10 +13,13 @@
       <div>🔒 Checking Access...<br /><small>Please wait...</small></div>
     </div>
 
-    <div id="accessDenied">
+    <!-- ACCESS DENIED -->
+    <div id="accessDenied" style="display: none;">
       <div class="access-card">
+        <div style="font-size: 80px; margin-bottom: 20px;">🚫</div>
         <h1>ACCESS DENIED</h1>
-        <p>Anda tidak memiliki hak akses ke halaman ini.</p>
+        <p>Anda tidak memiliki hak akses ke halaman ini.<br>Hubungi administrator untuk informasi lebih lanjut.</p>
+        <button onclick="window.location.href='home.html'">← Kembali ke Home</button>
       </div>
     </div>
 
@@ -100,8 +69,7 @@
           <label>Organizational Unit</label><input id="OrganizationalUnit" />
         </div>
         <div class="form-group">
-          <label>Nama Panjang Posisi - SIMKP</label
-          ><input id="NamaPanjangPosisiSIMKP" />
+          <label>Nama Panjang Posisi - SIMKP</label><input id="NamaPanjangPosisiSIMKP" />
         </div>
         <div class="form-group">
           <label>Jenjang - Main Grp ID</label><input id="JenjangMainGrpID" />
@@ -113,20 +81,17 @@
           <label>Jenjang - Sub Grp ID</label><input id="JenjangSubGrpID" />
         </div>
         <div class="form-group">
-          <label>Jenjang - Main Grp Text</label
-          ><input id="JenjangMainGrpText" />
+          <label>Jenjang - Main Grp Text</label><input id="JenjangMainGrpText" />
         </div>
         <div class="form-group"><label>BusA</label><input id="BusA" /></div>
         <div class="form-group">
           <label>Business Area</label><input id="BusinessArea" />
         </div>
         <div class="form-group">
-          <label>No SK Organizational Assignmen</label
-          ><input id="NoSKOrganizationalAssignmen" />
+          <label>No SK Organizational Assignmen</label><input id="NoSKOrganizationalAssignmen" />
         </div>
         <div class="form-group">
-          <label>Tanggal SK Organizational Assi</label
-          ><input type="date" id="TanggalSKOrganizationalAssi" />
+          <label>Tanggal SK Organizational Assi</label><input type="date" id="TanggalSKOrganizationalAssi" />
         </div>
         <div class="form-group">
           <label>Kode Jabatan</label><input id="KodeJabatan" />
@@ -151,10 +116,7 @@
 
         <!-- BUTTON -->
         <button class="btn-submit" id="btnSaveOnly">Simpan & Selesai</button>
-        <br /><br />
-        <button class="btn-submit" id="btnSaveMore">
-          Simpan & Tambah Lagi
-        </button>
+        <button class="btn-submit" id="btnSaveMore">Simpan & Tambah Lagi</button>
       </div>
     </div>
 

@@ -27,8 +27,9 @@ function showAccessDenied() {
 function showMainContent() {
   document.getElementById("loadingScreen").style.cssText = "display:none !important;";
   document.getElementById("accessDenied").style.cssText = "display:none !important;";
-  document.getElementById("mainContent").style.cssText = "display:block !important;";
+  document.getElementById("mainContent").style.cssText = "display:flex !important;";
 }
+
 
 
 // ===============================

@@ -27,7 +27,8 @@ function showAccessDenied() {
 function showMainContent() {
   document.getElementById("loadingScreen").style.cssText = "display:none !important;";
   document.getElementById("accessDenied").style.cssText = "display:none !important;";
-  document.getElementById("mainContent").style.cssText = "display:flex !important;";
+  // ✅ TAMBAHKAN SEMUA PROPERTY UNTUK CENTER
+  document.getElementById("mainContent").style.cssText = "display:flex !important; justify-content:center !important; align-items:center !important; min-height:100vh !important; padding:40px 20px !important;";
 }
 
 

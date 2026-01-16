@@ -1,0 +1,58 @@
+name: Deployment
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+jobs:
+  validate-secrets:
+    name: Validate required secrets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check presence of required secrets
+        run: |
+          missing=""
+          if [ -z "${{ secrets.SSH_PRIVATE_KEY }}" ]; then missing="$missing SSH_PRIVATE_KEY"; fi
+          if [ -z "${{ secrets.SSH_HOST }}" ]; then missing="$missing SSH_HOST"; fi
+          if [ -n "$missing" ]; then echo "Missing required secrets:$missing"; exit 1; fi
+
+  deploy:
+    name: Deploy to VPS
+    needs: validate-secrets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Write private key to temporary file
+        run: |
+          set -euo pipefail
+          printf '%s\n' "${{ secrets.SSH_PRIVATE_KEY }}" > /tmp/deploy_key
+          chmod 600 /tmp/deploy_key
+
+      - name: Add server to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p 22 "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Ensure remote path exists
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+        run: |
+          set -euxo pipefail
+          ssh -p 22 -o StrictHostKeyChecking=no -i /tmp/deploy_key ci@"${SSH_HOST}" "mkdir -p /srv/reloka"
+
+      - name: Sync repository to server via rsync
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+        run: |
+          set -euxo pipefail
+          rsync -e "ssh -p 22 -i /tmp/deploy_key -o StrictHostKeyChecking=no" -az --delete \
+            --exclude='.git' --exclude='.github' --exclude='.gitignore' ./ ci@"${SSH_HOST}":/srv/reloka/
+
+      - name: Cleanup ssh-agent and private key
+        run: |
+          rm -f /tmp/deploy_key || true
+          if [ -n "${SSH_AGENT_PID:-}" ]; then kill ${SSH_AGENT_PID} || true; fi

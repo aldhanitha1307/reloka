@@ -10,14 +10,15 @@ auth.onAuthStateChanged((user) => {
   const nipeg = localStorage.getItem("NIPEG");
 
   if (!nipeg || !isAdmin(nipeg)) {
-    document.getElementById("loadingScreen").style.display = "none";
-    document.getElementById("accessDenied").style.display = "block";
-    document.getElementById("mainContent").style.display = "none";
-  } else {
-    document.getElementById("loadingScreen").style.display = "none";
-    document.getElementById("accessDenied").style.display = "none";
-    document.getElementById("mainContent").style.display = "block";
-  }
+    document.getElementById("loadingScreen").style.cssText = "display: none !important;";
+    document.getElementById("accessDenied").style.cssText = "display: flex !important;";
+    document.getElementById("mainContent").style.cssText = "display: none !important;";
+} else {
+    document.getElementById("loadingScreen").style.cssText = "display: none !important;";
+    document.getElementById("accessDenied").style.cssText = "display: none !important;";
+    document.getElementById("mainContent").style.cssText = "display: block !important;";
+}
+
 });
 
 // ===============================

@@ -85,20 +85,15 @@ body {
     opacity: 0.9;
 }
 
-/* =========== MAIN CONTENT CONTAINER ========= */
+/* =========== MAIN CONTENT CONTAINER - FIXED CENTER ========= */
 #mainContent {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    overflow: auto;
+    align-items: flex-start;
     padding: 40px 20px;
+    box-sizing: border-box;
 }
-
 
 .container {
     width: 100%;
@@ -108,6 +103,7 @@ body {
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.3);
     box-sizing: border-box;
+    margin: auto;
 }
 
 /* ===== HEADERS ===== */
